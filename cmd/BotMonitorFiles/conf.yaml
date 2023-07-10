@@ -1,0 +1,11 @@
+token: 6128685261:AAE3T7hUe4sDEb6LhRI8REqxRRo5OkYaido
+chatid: 375658316
+path: "C:/qwe/"
+mask: "*.txt"
+mindate: "1/1/2023"
+userdb: "bot"
+passdb: "botdbpass"
+namedb: "filesdb"
+tablenamedb: "files"
+fieldnamedb: "filepath"
+port: 5432
