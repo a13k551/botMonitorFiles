@@ -15,7 +15,6 @@ import (
 func StartBot() {
 
 	conf := config.GetConf()
-	//confdb := config.GetConfdb()
 
 	db.CreateBase(conf)
 	db.CreateTables(conf)
