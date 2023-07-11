@@ -27,7 +27,7 @@ func StartBot() {
 
 	defer connection.Close()
 
-	bot, err := tgbotapi.NewBotAPI(conf["token"].(string))
+	bot, err := tgbotapi.NewBotAPI(conf.Token)
 
 	if err != nil {
 		log.Panic(err)
@@ -66,8 +66,8 @@ func StartBot() {
 	}
 }
 
-func findFiles(conf map[string]interface{}) ([]string, error) {
-	findString := fmt.Sprintf("%s%s", conf["path"], conf["mask"])
+func findFiles(conf config.Config) ([]string, error) {
+	findString := fmt.Sprintf("%s%s", conf.Path, conf.Mask)
 	findedFiles, err := filepath.Glob(findString)
 
 	if err != nil {
@@ -81,7 +81,7 @@ func findFiles(conf map[string]interface{}) ([]string, error) {
 	return findedFiles, nil
 }
 
-func validDate(filepath string, conf map[string]interface{}) bool {
+func validDate(filepath string, conf config.Config) bool {
 
 	fileStat, err := os.Stat(filepath)
 	if err != nil {
@@ -89,7 +89,7 @@ func validDate(filepath string, conf map[string]interface{}) bool {
 	}
 
 	fileTime := fileStat.ModTime()
-	minDate, err := time.Parse("2/1/2006", conf["mindate"].(string))
+	minDate, err := time.Parse("2/1/2006", conf.MinDate)
 	if err != nil {
 		return false
 	}
@@ -101,7 +101,7 @@ func validDate(filepath string, conf map[string]interface{}) bool {
 	}
 }
 
-func sendFileToChat(findedFilePath string, bot *tgbotapi.BotAPI, conf map[string]interface{}) error {
+func sendFileToChat(findedFilePath string, bot *tgbotapi.BotAPI, conf config.Config) error {
 
 	fileBytes, err := os.ReadFile(findedFilePath)
 	if err != nil {
@@ -114,7 +114,7 @@ func sendFileToChat(findedFilePath string, bot *tgbotapi.BotAPI, conf map[string
 		Bytes: fileBytes,
 	}
 
-	chatidint := conf["chatid"].(int)
+	chatidint := conf.Chatid
 	chatidint64 := int64(chatidint)
 
 	Document := tgbotapi.NewDocument(chatidint64, telegrammFileBytes)
