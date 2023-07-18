@@ -7,11 +7,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-func GetConf() Config {
+func Load() Config {
 
 	viper.SetConfigName("conf")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("../..")
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
@@ -20,7 +20,7 @@ func GetConf() Config {
 	var Config Config
 
 	err = mapstructure.Decode(viper.AllSettings(), &Config)
-	
+
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 	}
@@ -29,15 +29,15 @@ func GetConf() Config {
 }
 
 type Config struct {
-	Token string
-	Chatid int
-	Path string
-	Mask string
-	MinDate string
-	UserDB string
-	PassDB string
-	NameDB string
+	Token       string
+	Chatid      int
+	Path        string
+	Mask        string
+	MinDate     string
+	UserDB      string
+	PassDB      string
+	NameDB      string
 	TableNamedb string
 	FieldnameDB string
-	Port uint16
+	Port        uint16
 }

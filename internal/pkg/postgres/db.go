@@ -1,10 +1,10 @@
-package db
+package postgres
 
 import (
 	"fmt"
 	"log"
 
-	"github.com/a13k551/botMonitorFiles/internal/config"
+	"github.com/a13k551/botMonitorFiles/internal/pkg/config"
 	"github.com/jackc/pgx"
 )
 

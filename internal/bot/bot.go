@@ -7,14 +7,14 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/a13k551/botMonitorFiles/internal/config"
-	"github.com/a13k551/botMonitorFiles/internal/db"
+	"github.com/a13k551/botMonitorFiles/internal/pkg/config"
+	db "github.com/a13k551/botMonitorFiles/internal/pkg/postgres"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func StartBot() {
 
-	conf := config.GetConf()
+	conf := config.Load()
 
 	db.CreateBase(conf)
 	db.CreateTables(conf)
