@@ -1,8 +1,8 @@
 package bot
 
 import (
-	//"fmt"
-	//"log"
+	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"time"

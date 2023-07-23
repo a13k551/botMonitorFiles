@@ -1,5 +1,5 @@
 fmt:
-	$(GOPATH)\bin\goimports $(CURDIR)
+	$(GOPATH)\bin\goimports
 .PHONY:fmt
 
 lint: fmt
