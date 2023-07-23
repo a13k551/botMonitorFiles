@@ -1,17 +1,7 @@
-.DEFAULT_GOAL := build 
-
 fmt:
 	go fmt ./...
 .PHONY:fmt
 
 lint: fmt
-	golint ./...
+	$(GOPATH)\bin\golangci-lint run ./...
 .PHONY:lint
-
-vet: fmt
-	go vet ./...
-.PHONY:vet
-
-build: vet
-	go build cmd/BotMonitorFiles/main.go
-.PHONY:build
