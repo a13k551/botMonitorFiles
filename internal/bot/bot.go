@@ -80,9 +80,7 @@ func findFiles(conf config.Config) ([]string, error) {
 
 	return findedFiles, nil
 }
-func add() {
 
-}
 func validDate(filepath string, conf config.Config) bool {
 
 	fileStat, err := os.Stat(filepath)
